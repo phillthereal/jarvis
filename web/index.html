@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jarvis</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="banner" class="banner" role="alert" hidden>Reload the page to reconnect</div>
+
+  <header class="top">
+    <div class="brand"><span class="wordmark">JARVIS</span><span class="faint mono">v2</span><span id="health-dot" class="health-dot" role="status" hidden></span></div>
+    <ul id="health" class="health" aria-label="Tier health"></ul>
+    <div class="clock"><span id="clock" class="mono time">--:--</span><span id="date" class="faint"></span></div>
+  </header>
+
+  <main class="grid">
+    <div class="col" id="col-left">
+      <section class="panel" aria-labelledby="h-usage">
+        <h2 id="h-usage" class="label">Usage</h2>
+        <div class="meters">
+          <div class="meter"><div class="mlabel mono">5-hour</div><div id="u-session" class="big mono">—</div><div class="bar"><i id="b-session"></i></div><div id="r-session" class="faint small"></div></div>
+          <div class="meter"><div class="mlabel mono">Week</div><div id="u-week" class="big mono">—</div><div class="bar"><i id="b-week"></i></div><div id="r-week" class="faint small"></div></div>
+        </div>
+        <dl id="usage-list" class="kv"></dl>
+      </section>
+
+      <section class="panel" aria-labelledby="h-plan">
+        <h2 id="h-plan" class="label">Directives · top 3</h2>
+        <ul id="directives" class="list"></ul>
+        <h3 class="label faint-label">Today</h3>
+        <ul id="events" class="list"></ul>
+      </section>
+
+      <section class="panel" aria-labelledby="h-weekly">
+        <h2 id="h-weekly" class="label">Weekly review</h2>
+        <div id="weekly"></div>
+        <button type="button" class="skill wide" data-skill="weekly-review">Write weekly review</button>
+      </section>
+
+      <section class="panel" aria-labelledby="h-system">
+        <h2 id="h-system" class="label">System</h2>
+        <dl id="system" class="kv"></dl>
+      </section>
+    </div>
+
+    <div class="col" id="col-mid">
+      <section class="panel core-panel" aria-label="Core">
+        <canvas id="core" height="260" role="img" aria-label="Animated core visual; colour shows which tier is answering"></canvas>
+        <p id="core-label" class="mono core-label" aria-live="polite">idle</p>
+      </section>
+
+      <form id="ask" class="panel ask" autocomplete="off">
+        <label for="ask-text" class="sr">Ask or give a task</label>
+        <input id="ask-text" type="text" placeholder="Ask or give a task…">
+        <label for="ask-mode" class="sr">Routing mode</label>
+        <select id="ask-mode">
+          <option value="auto">Auto</option>
+          <option value="tier:1">Tier 1</option>
+          <option value="tier:2">Tier 2</option>
+          <option value="tier:3">Tier 3</option>
+          <option value="tier:4">Tier 4</option>
+          <option value="tier:5">Tier 5</option>
+          <option value="model">Model…</option>
+        </select>
+        <label for="ask-model" class="sr">Model name</label>
+        <input id="ask-model" type="text" placeholder="model name" hidden>
+        <button id="ask-send" type="submit" class="send">Send</button>
+        <div class="ask-row">
+          <button id="voice-toggle" type="button" class="tog" aria-pressed="false"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h2.500L8 3v10L4.500 10H2z"/><path d="M10.500 5.500a3.500 3.500 0 0 1 0 5M12.500 3.500a6.500 6.500 0 0 1 0 9"/></svg>Read aloud</button>
+          <button id="pause-toggle" type="button" class="tog" aria-pressed="false">Pause to send</button>
+          <span id="ask-status" class="ask-status" aria-hidden="true"></span>
+          <span id="ask-live" class="sr" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <section id="actions" class="panel" aria-labelledby="h-actions" hidden>
+        <h2 id="h-actions" class="label">Pending actions · <span id="actions-n">0</span></h2>
+        <div id="actions-body"></div>
+      </section>
+
+      <section aria-label="Answers" id="answers" class="answers"></section>
+    </div>
+
+    <div class="col" id="col-right">
+      <section class="panel lib" aria-labelledby="h-lib">
+        <h2 id="h-lib" class="label">Library</h2>
+        <label class="drop" id="lib-drop">
+          <input id="lib-file" class="sr" type="file" multiple accept=".pdf,.png,.jpg,.jpeg,.heic,.tiff,.txt,.md,.csv,.doc,.docx,.rtf,.odt">
+          <span>Drop documents here</span>
+          <span class="drop-or">or <span class="drop-link">choose files</span></span>
+        </label>
+        <div class="lib-row">
+          <label for="lib-desc" class="sr">Describe it (optional)</label>
+          <input id="lib-desc" type="text" maxlength="500" placeholder="Describe it (optional)" autocomplete="off">
+        </div>
+        <p id="lib-status" class="lib-status mono" aria-live="polite"></p>
+        <div id="lib-body"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-skills">
+        <h2 id="h-skills" class="label">Skills</h2>
+        <div class="skills">
+          <button type="button" class="skill" data-skill="plan-today">Plan today</button>
+          <button type="button" class="skill" data-skill="inbox-brief">Inbox brief</button>
+          <button type="button" class="skill" data-skill="morning-intel">Morning intel</button>
+          <button type="button" class="skill" data-skill="vault-ingest">Vault ingest</button>
+        </div>
+        <button type="button" class="link" data-skill="vault-lint">Vault lint</button>
+        <div id="skill-notes" aria-live="polite"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-inbox">
+        <h2 id="h-inbox" class="label">Inbox</h2>
+        <div id="inbox"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-intel">
+        <h2 id="h-intel" class="label">Morning intel</h2>
+        <div id="intel"></div>
+      </section>
+
+      <section id="night" class="panel" aria-labelledby="h-night">
+        <h2 id="h-night" class="label">Night school</h2>
+        <div id="night-body"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

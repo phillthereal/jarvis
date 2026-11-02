@@ -1,0 +1,61 @@
+# filemap
+
+- `CLAUDE.md` — agent rules + commands
+- `docs/SPEC.md` — build contract (API, routing, vault, night school)
+- `docs/ROUTING-DESIGN.md` — locked routing decisions and why
+- `docs/DESIGN.md` — dashboard design spec
+- `.env` — secrets (gitignored, chmod 600)
+- `.env.example` — every env var the code reads, empty values
+- `bridge/` — stdlib local bridge package (`__main__` starts the server on 127.0.0.1)
+- `bridge/server.py` — ThreadingHTTPServer: dashboard, /api/* routes, auth cookie, Host/Origin checks, CSP
+- `bridge/config.py` — `load_config()` (config.json; `AOS_VAULT` overrides `vault_path`) and `load_env()` (.env parser, no os.environ)
+- `bridge/providers/__init__.py` — `Answer` dataclass and `Provider` protocol
+- `config.json` — routing/config defaults (SPEC "Config")
+- `web/index.html` — dashboard page (three columns; `?demo=1` uses built-in sample data)
+- `tests/` — unittest suite (`test_smoke.py`: config, env parser, Answer, server)
+- `.claude/launch.json` — preview launch config for the bridge
+- `.gitignore` — ignores .env, data/, caches
+- `bridge/__init__.py` — package marker
+- `bridge/__main__.py` — `python3 -m bridge` entry; starts the server on 127.0.0.1:8777
+- `bridge/awr.py` — the one place that puts `~/Ai Workload` (or `AOS_AI_WORKLOAD`) (root + src) on sys.path; `jev_key()`
+- `bridge/jevtier.py` — Jev (tier 0.5) classifier wrapper over the `router` package
+- `bridge/jobs.py` — background skill-run jobs (`/api/skills/{name}/run`, `/api/jobs/{id}`)
+- `bridge/log.py` — SQLite request log (data/requests.db): insert/get/feedback/night labels/stats
+- `bridge/providers/claude_cli.py` — Tier 3 provider via the `claude` CLI
+- `bridge/providers/free_cloud.py` — Tier 4 free-cloud providers (Groq, OpenRouter)
+- `bridge/providers/ollama.py` — Tier 2 local Ollama provider + checker
+- `bridge/providers/paid.py` — Tier 5 paid providers (off unless `paid_enabled`)
+- `bridge/route.py` — Router: tier 1 lookups, Jev, escalation ladder, logging
+- `bridge/tier1.py` — regex intents + approved night-school shortcuts (data/shortcuts.json) -> lookups
+- `bridge/usage.py` — usage counters (ccusage tokens, Claude Pro %, free-cloud headers, caps)
+- `bridge/widgets.py` — widget data: inbox, calendar, plan, intel, weekly, system
+- `launchd/com.filip.aos-morning-intel.plist` — 06:30 morning intel schedule
+- `launchd/com.filip.aos-vault-ingest.plist` — 23:00 nightly /vault-ingest (raw/ → wiki/), before the 23:30 backup
+- `launchd/com.filip.aos-night-school.plist` — nightly night-school schedule
+- `night/` — night school package (`__main__` CLI; `api.py` status/approve; `school.py` labelling, proposals)
+- `rulebook.seed.json` — seed routing rulebook copied to data/rulebook.json
+- `scripts/fetch_intel.py` — RSS fetch + AI keyword filter -> vault outputs/intel/YYYY-MM-DD.md
+- `scripts/install_schedules.sh` — installs the launchd schedules (substitutes the plists' `__HOME__` placeholder with `$HOME`)
+- `scripts/notion_sync.py` — Notion email-tasks sync helper
+- `scripts/run_skill.sh` — runs a Claude skill headlessly for the jobs runner
+- `scripts/statusline_capture.py` — captures Claude statusline JSON for usage percentages
+- `web/app.js` — dashboard logic (fetch, render with textContent, demo data)
+- `web/style.css` — dashboard styles
+- `tests/test_intel.py`, `test_night.py`, `test_providers.py`, `test_route.py`, `test_server.py`, `test_widgets.py`, `test_tier1_shortcuts.py` — unittest modules
+- `launchd/com.filip.aos-bridge.plist` — keeps the bridge running at login (RunAtLoad, restart on crash)
+- `macos/Jarvis.app` — Dock app: starts bridge if down, opens Chrome app-mode window; `macos/icon.svg` is the icon source
+- `scripts/install_app.sh` — copies Jarvis.app to ~/Applications
+- `macos/calendar/` — JarvisCalendar.app source (EventKit: read today's events; `add` mode creates one event after approval) + `build.sh` (→ ~/Applications; rebuilding resets its calendar permission)
+- `bridge/actions.py` — actions with approval: parse jarvis-action blocks, validate, pending store, approve/reject, executors (Notion, calendar, email draft file + mailto)
+- `tests/test_actions.py` — action schema, guards, injection, executor and mailto tests
+- `bridge/health.py` — launchd job health (last exit code, log mtime, missed slots) for `/api/health`
+- `scripts/backup_vault.sh` — nightly vault git backup (refuses to commit plugin data.json)
+- `launchd/com.filip.aos-vault-backup.plist` — 23:30 vault backup schedule
+- `launchd/com.filip.aos-library.plist` — `WatchPaths` on both library inbox dirs -> `python3 -m bridge.library scan` (logs `data/logs/aos-library*.log`); installed by install_schedules.sh
+- `tests/test_health.py` — health parsing/slot logic tests
+- Vault `.claude/skills/weekly-review/SKILL.md` — weekly review skill (writes `outputs/reviews/YYYY-Www.md`); `outputs/reviews/` holds the results
+- Weekly and system widgets live in `bridge/widgets.py`, routed in `bridge/server.py`; panels in `web/`
+- `macos/reader/` — JarvisReader CLI source (PDFKit text, Vision OCR for scans/images; `ERR <reason>` on failure) + `build.sh` (→ `bin/JarvisReader`, gitignored; no TCC permission needed)
+- `bridge/library.py` — document library: read (JarvisReader/textutil/plain), classify with local Ollama (JSON, validated), file into vault `library/<Category>/` + sidecar note, `_review`/`_duplicates`, `file_review`, `scan` (CLI `python3 -m bridge.library scan|process`), `listing`
+- `tests/test_library.py` — classify validation, filing/collision/sanitising, duplicates, review decisions, scan skip rules + lock, upcoming window
+- `config.json` `library_inbox_dirs` — inbox folders scanned by `bridge.library scan` (data/inbox + iCloud `Jarvis Inbox`)

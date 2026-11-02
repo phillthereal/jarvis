@@ -1,0 +1,726 @@
+{
+ "qwen3.5:9b|base": [
+  {
+   "id": 1,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1067,
+   "ok": true
+  },
+  {
+   "id": 2,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 3636,
+   "ok": true
+  },
+  {
+   "id": 3,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 3925,
+   "ok": true
+  },
+  {
+   "id": 4,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 5706,
+   "ok": true
+  },
+  {
+   "id": 5,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 4434,
+   "ok": true
+  },
+  {
+   "id": 6,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 4365,
+   "ok": true
+  },
+  {
+   "id": 7,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 3008,
+   "ok": true
+  },
+  {
+   "id": 8,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2787,
+   "ok": true
+  },
+  {
+   "id": 9,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2794,
+   "ok": true
+  },
+  {
+   "id": 10,
+   "label": "good",
+   "kind": "ai-news",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2487,
+   "ok": true
+  },
+  {
+   "id": 11,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2512,
+   "ok": true
+  },
+  {
+   "id": 12,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2557,
+   "ok": true
+  },
+  {
+   "id": 13,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2835,
+   "ok": true
+  },
+  {
+   "id": 14,
+   "label": "good",
+   "kind": "ai-news",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 3256,
+   "ok": true
+  },
+  {
+   "id": 15,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 3228,
+   "ok": true
+  },
+  {
+   "id": 16,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 4556,
+   "ok": true
+  },
+  {
+   "id": 17,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2778,
+   "ok": true
+  },
+  {
+   "id": 18,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 3026,
+   "ok": true
+  },
+  {
+   "id": 19,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 2782,
+   "ok": true
+  },
+  {
+   "id": 20,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 3012,
+   "ok": true
+  },
+  {
+   "id": 21,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: Incorrect definition (RAG actually refers to Retrieval-Augmented Generation).",
+   "raw": "FAIL: Incorrect definition (RAG actually refers to Retrieval-Augmented Generation).",
+   "ms": 7359,
+   "ok": true
+  },
+  {
+   "id": 22,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: Incorrect advice. Running `git reset --hard HEAD~1` discards both the last commit *and* its local changes, potentially overwriting work if it was only staged or partially committed; to keep changes while undoing a commit you should use `git reset --soft HEAD~1` (if only unstaged) or at least ensure uncommitted changes aren't lost with soft/mixed reset.",
+   "raw": "FAIL: Incorrect advice. Running `git reset --hard HEAD~1` discards both the last commit *and* its local changes, potentially overwriting work if it was only staged or partially committed; to keep changes while undoing a commit you should use `git reset --soft HEAD~1` (if only unstaged) or at least ensure uncommitted changes aren't lost with soft/mixed reset.",
+   "ms": 20437,
+   "ok": true
+  },
+  {
+   "id": 23,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: The statement that all building work in the UK is \"always\" exempt and involves a 0% rate is incorrect; only new residential housing built by approved builders qualifies for zero-rating (treated as outside the scope of VAT), while most other building works are taxable at the standard or reduced rates.",
+   "raw": "FAIL: The statement that all building work in the UK is \"always\" exempt and involves a 0% rate is incorrect; only new residential housing built by approved builders qualifies for zero-rating (treated as outside the scope of VAT), while most other building works are taxable at the standard or reduced rates.",
+   "ms": 20578,
+   "ok": true
+  },
+  {
+   "id": 24,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: Incorrect definition (CIS in the UK construction context refers to Construction Industry Scheme tax compliance, not insurance)",
+   "raw": "FAIL: Incorrect definition (CIS in the UK construction context refers to Construction Industry Scheme tax compliance, not insurance)",
+   "ms": 7633,
+   "ok": true
+  },
+  {
+   "id": 25,
+   "label": "bad",
+   "kind": "off-topic",
+   "verdict": "FAIL: The answer describes the history of Python but fails to explain the differences between lists and tuples as requested.",
+   "raw": "FAIL: The answer describes the history of Python but fails to explain the differences between lists and tuples as requested.",
+   "ms": 5603,
+   "ok": true
+  },
+  {
+   "id": 26,
+   "label": "bad",
+   "kind": "off-topic",
+   "verdict": "FAIL: The answer addresses \"sourdough starter\" instead of answering the question about \"Ollama\".",
+   "raw": "FAIL: The answer addresses \"sourdough starter\" instead of answering the question about \"Ollama\".",
+   "ms": 6157,
+   "ok": true
+  },
+  {
+   "id": 27,
+   "label": "bad",
+   "kind": "needless-refusal",
+   "verdict": "FAIL: The assistant incorrectly refused to answer a common and legitimate system administration question; it should have provided the appropriate command (e.g., `lsof -i :8777` or `netstat -an | grep 8777`).",
+   "raw": "FAIL: The assistant incorrectly refused to answer a common and legitimate system administration question; it should have provided the appropriate command (e.g., `lsof -i :8777` or `netstat -an | grep 8777`).",
+   "ms": 14260,
+   "ok": true
+  },
+  {
+   "id": 28,
+   "label": "bad",
+   "kind": "needless-refusal",
+   "verdict": "FAIL: Refusal (The model incorrectly refused to answer a benign, common programming question).",
+   "raw": "FAIL: Refusal (The model incorrectly refused to answer a benign, common programming question).",
+   "ms": 8500,
+   "ok": true
+  },
+  {
+   "id": 29,
+   "label": "bad",
+   "kind": "truncated",
+   "verdict": "FAIL: The answer provides context about when an agreement is needed but fails to actually define what a party wall agreement (award) is or explain its purpose and legal effect under the Party Wall etc. Act 1996, ending with \"before\" without completing the sentence.",
+   "raw": "FAIL: The answer provides context about when an agreement is needed but fails to actually define what a party wall agreement (award) is or explain its purpose and legal effect under the Party Wall etc. Act 1996, ending with \"before\" without completing the sentence.",
+   "ms": 12314,
+   "ok": true
+  },
+  {
+   "id": 30,
+   "label": "bad",
+   "kind": "truncated",
+   "verdict": "FAIL: Incomplete and potentially incorrect response. The answer cuts off mid-command (should be `-a`) and fails to mention that it should run from the directory containing files or combine with `-1` if listing all entries including hidden ones are required without path issues, but more importantly, `ls -a` is the correct complete command for Mac terminal to list all files including hidden. The given answer does not provide a complete command and leaves the user hanging.",
+   "raw": "FAIL: Incomplete and potentially incorrect response. The answer cuts off mid-command (should be `-a`) and fails to mention that it should run from the directory containing files or combine with `-1` if listing all entries including hidden ones are required without path issues, but more importantly, `ls -a` is the correct complete command for Mac terminal to list all files including hidden. The given answer does not provide a complete command and leaves the user hanging.",
+   "ms": 15920,
+   "ok": true
+  },
+  {
+   "id": 31,
+   "label": "bad",
+   "kind": "truncated",
+   "verdict": "FAIL: Inaccurate history (MCP Protocol v1 was released around May/June 2024, not 2021). Additionally, the answer cuts off mid-sentence. The correct description should attribute the protocol to Anthropic for their AI ecosystem or clarify it's a generic standard currently led by that team.",
+   "raw": "FAIL: Inaccurate history (MCP Protocol v1 was released around May/June 2024, not 2021). Additionally, the answer cuts off mid-sentence. The correct description should attribute the protocol to Anthropic for their AI ecosystem or clarify it's a generic standard currently led by that team.",
+   "ms": 12217,
+   "ok": true
+  },
+  {
+   "id": 32,
+   "label": "bad",
+   "kind": "hallucination",
+   "verdict": "FAIL: Hallucinated facts about authorship (no such Dr. Helena Marsh at OpenAI), nonexistent paper title ('Lossless Bit Folding'), and incorrect claims regarding bit folding results; the answer does not explain language model quantisation correctly.",
+   "raw": "FAIL: Hallucinated facts about authorship (no such Dr. Helena Marsh at OpenAI), nonexistent paper title ('Lossless Bit Folding'), and incorrect claims regarding bit folding results; the answer does not explain language model quantisation correctly.",
+   "ms": 10441,
+   "ok": true
+  },
+  {
+   "id": 33,
+   "label": "bad",
+   "kind": "hallucination",
+   "verdict": "FAIL: The definition given regarding \"Transformer Act of 2019\" and an immutable \"hard-coded\" 8k limit is factually incorrect; context windows are variable parameters defined by specific models (like LLaMA or GPT) and vendors can choose different sizes (ranging from a few thousand to hundreds of thousands).",
+   "raw": "FAIL: The definition given regarding \"Transformer Act of 2019\" and an immutable \"hard-coded\" 8k limit is factually incorrect; context windows are variable parameters defined by specific models (like LLaMA or GPT) and vendors can choose different sizes (ranging from a few thousand to hundreds of thousands).",
+   "ms": 14501,
+   "ok": true
+  },
+  {
+   "id": 34,
+   "label": "bad",
+   "kind": "hallucination",
+   "verdict": "FAIL: The answer is factually incorrect; there is no national price cap of \u00a349 for all skips, and prices vary significantly based on size (e.g., mini vs standard) and location.",
+   "raw": "FAIL: The answer is factually incorrect; there is no national price cap of \u00a349 for all skips, and prices vary significantly based on size (e.g., mini vs standard) and location.",
+   "ms": 12351,
+   "ok": true
+  },
+  {
+   "id": 35,
+   "label": "bad",
+   "kind": "different-question",
+   "verdict": "FAIL: The answer describes planning permission, not building regulations approval. Building Regulations in the UK relate to safety, health, energy efficiency, accessibility, and other technical standards for construction work (ensuring a property is safe to build or renovate), whereas Planning Permission relates to land use and development control by the local council.",
+   "raw": "FAIL: The answer describes planning permission, not building regulations approval. Building Regulations in the UK relate to safety, health, energy efficiency, accessibility, and other technical standards for construction work (ensuring a property is safe to build or renovate), whereas Planning Permission relates to land use and development control by the local council.",
+   "ms": 13423,
+   "ok": true
+  },
+  {
+   "id": 36,
+   "label": "bad",
+   "kind": "different-question",
+   "verdict": "FAIL: The answer explains how to *create* a script but fails to address the specific question of how to **make** the existing script executable (i.e., adding execute permissions via `chmod`).",
+   "raw": "FAIL: The answer explains how to *create* a script but fails to address the specific question of how to **make** the existing script executable (i.e., adding execute permissions via `chmod`).",
+   "ms": 9370,
+   "ok": true
+  },
+  {
+   "id": 37,
+   "label": "bad",
+   "kind": "different-question",
+   "verdict": "FAIL: The answer describes tokens in the context of finance and cybersecurity (e.g., hardware keys, gift cards), not Large Language Models where a \"token\" refers to a unit of text used by AI models for input processing.",
+   "raw": "FAIL: The answer describes tokens in the context of finance and cybersecurity (e.g., hardware keys, gift cards), not Large Language Models where a \"token\" refers to a unit of text used by AI models for input processing.",
+   "ms": 13175,
+   "ok": true
+  },
+  {
+   "id": 38,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: The answer provides factually incorrect definitions (load-bearing walls are not defined by color or studs alone; neither type of wall described matches standard construction terms correctly) and gives dangerous advice on removing structural elements without professional assessment.",
+   "raw": "FAIL: The answer provides factually incorrect definitions (load-bearing walls are not defined by color or studs alone; neither type of wall described matches standard construction terms correctly) and gives dangerous advice on removing structural elements without professional assessment.",
+   "ms": 10271,
+   "ok": true
+  },
+  {
+   "id": 39,
+   "label": "bad",
+   "kind": "too-short",
+   "verdict": "FAIL: The answer does not address or define what an AI agent is, providing only a nonsensical one-word response (\"Yes\") that fails to explain the concept requested in the question.",
+   "raw": "FAIL: The answer does not address or define what an AI agent is, providing only a nonsensical one-word response (\"Yes\") that fails to explain the concept requested in the question.",
+   "ms": 8015,
+   "ok": true
+  },
+  {
+   "id": 40,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: The answer is incorrect; \"Rule of Thumb\" refers to an approximate method for estimation and does not specify a fixed time like 20 minutes per kitchen fit in UK construction standards (typically estimates range from hours depending on complexity, or use formulas based on room dimensions).",
+   "raw": "FAIL: The answer is incorrect; \"Rule of Thumb\" refers to an approximate method for estimation and does not specify a fixed time like 20 minutes per kitchen fit in UK construction standards (typically estimates range from hours depending on complexity, or use formulas based on room dimensions).",
+   "ms": 11784,
+   "ok": true
+  }
+ ],
+ "qwen2.5:7b|base": [
+  {
+   "id": 1,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 8172,
+   "ok": true
+  },
+  {
+   "id": 2,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1385,
+   "ok": true
+  },
+  {
+   "id": 3,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1599,
+   "ok": true
+  },
+  {
+   "id": 4,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1832,
+   "ok": true
+  },
+  {
+   "id": 5,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1818,
+   "ok": true
+  },
+  {
+   "id": 6,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1618,
+   "ok": true
+  },
+  {
+   "id": 7,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1478,
+   "ok": true
+  },
+  {
+   "id": 8,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1677,
+   "ok": true
+  },
+  {
+   "id": 9,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1684,
+   "ok": true
+  },
+  {
+   "id": 10,
+   "label": "good",
+   "kind": "ai-news",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1205,
+   "ok": true
+  },
+  {
+   "id": 11,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1484,
+   "ok": true
+  },
+  {
+   "id": 12,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1186,
+   "ok": true
+  },
+  {
+   "id": 13,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1432,
+   "ok": true
+  },
+  {
+   "id": 14,
+   "label": "good",
+   "kind": "ai-news",
+   "verdict": "FAIL: Simplification needed",
+   "raw": "FAIL: Simplification needed",
+   "ms": 1464,
+   "ok": true
+  },
+  {
+   "id": 15,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1234,
+   "ok": true
+  },
+  {
+   "id": 16,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1286,
+   "ok": true
+  },
+  {
+   "id": 17,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1464,
+   "ok": true
+  },
+  {
+   "id": 18,
+   "label": "good",
+   "kind": "definition",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1460,
+   "ok": true
+  },
+  {
+   "id": 19,
+   "label": "good",
+   "kind": "uk-construction",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1186,
+   "ok": true
+  },
+  {
+   "id": 20,
+   "label": "good",
+   "kind": "howto",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 1162,
+   "ok": true
+  },
+  {
+   "id": 21,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: incorrect definition",
+   "raw": "FAIL: incorrect definition",
+   "ms": 1322,
+   "ok": true
+  },
+  {
+   "id": 22,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: incorrect command for keeping changes",
+   "raw": "FAIL: incorrect command for keeping changes",
+   "ms": 1741,
+   "ok": true
+  },
+  {
+   "id": 23,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: Incorrect VAT information",
+   "raw": "FAIL: Incorrect VAT information",
+   "ms": 1236,
+   "ok": true
+  },
+  {
+   "id": 24,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "PASS",
+   "raw": "PASS",
+   "ms": 921,
+   "ok": true
+  },
+  {
+   "id": 25,
+   "label": "bad",
+   "kind": "off-topic",
+   "verdict": "FAIL: does not answer the question about differences between a Python list and a tuple",
+   "raw": "FAIL: does not answer the question about differences between a Python list and a tuple",
+   "ms": 2700,
+   "ok": true
+  },
+  {
+   "id": 26,
+   "label": "bad",
+   "kind": "off-topic",
+   "verdict": "FAIL: Incorrect answer",
+   "raw": "FAIL: Incorrect answer",
+   "ms": 1574,
+   "ok": true
+  },
+  {
+   "id": 27,
+   "label": "bad",
+   "kind": "needless-refusal",
+   "verdict": "FAIL: incorrect response",
+   "raw": "FAIL: incorrect response",
+   "ms": 1135,
+   "ok": true
+  },
+  {
+   "id": 28,
+   "label": "bad",
+   "kind": "needless-refusal",
+   "verdict": "FAIL: incorrect response",
+   "raw": "FAIL: incorrect response",
+   "ms": 1416,
+   "ok": true
+  },
+  {
+   "id": 29,
+   "label": "bad",
+   "kind": "truncated",
+   "verdict": "FAIL: Incomplete definition",
+   "raw": "FAIL: Incomplete definition",
+   "ms": 1557,
+   "ok": true
+  },
+  {
+   "id": 30,
+   "label": "bad",
+   "kind": "truncated",
+   "verdict": "FAIL: missing key part of command",
+   "raw": "FAIL: missing key part of command",
+   "ms": 1694,
+   "ok": true
+  },
+  {
+   "id": 31,
+   "label": "bad",
+   "kind": "truncated",
+   "verdict": "FAIL: lacks key details",
+   "raw": "FAIL: lacks key details",
+   "ms": 1794,
+   "ok": true
+  },
+  {
+   "id": 32,
+   "label": "bad",
+   "kind": "hallucination",
+   "verdict": "FAIL: Incorrect topic",
+   "raw": "FAIL: Incorrect topic",
+   "ms": 1867,
+   "ok": true
+  },
+  {
+   "id": 33,
+   "label": "bad",
+   "kind": "hallucination",
+   "verdict": "FAIL: incorrect source and overly specific detail",
+   "raw": "FAIL: incorrect source and overly specific detail",
+   "ms": 1699,
+   "ok": true
+  },
+  {
+   "id": 34,
+   "label": "bad",
+   "kind": "hallucination",
+   "verdict": "FAIL: Incorrect information about brick skips; typically, brick skips are larger and their pricing is not fixed at \u00a349.",
+   "raw": "FAIL: Incorrect information about brick skips; typically, brick skips are larger and their pricing is not fixed at \u00a349.",
+   "ms": 3138,
+   "ok": true
+  },
+  {
+   "id": 35,
+   "label": "bad",
+   "kind": "different-question",
+   "verdict": "FAIL: The answer provided refers to planning permission instead of building regulations approval, which was the correct focus of the question.",
+   "raw": "FAIL: The answer provided refers to planning permission instead of building regulations approval, which was the correct focus of the question.",
+   "ms": 3318,
+   "ok": true
+  },
+  {
+   "id": 36,
+   "label": "bad",
+   "kind": "different-question",
+   "verdict": "FAIL: missing steps to make the script executable",
+   "raw": "FAIL: missing steps to make the script executable",
+   "ms": 1912,
+   "ok": true
+  },
+  {
+   "id": 37,
+   "label": "bad",
+   "kind": "different-question",
+   "verdict": "FAIL: incorrect context",
+   "raw": "FAIL: incorrect context",
+   "ms": 1430,
+   "ok": true
+  },
+  {
+   "id": 38,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: incorrect definition of walls",
+   "raw": "FAIL: incorrect definition of walls",
+   "ms": 1535,
+   "ok": true
+  },
+  {
+   "id": 39,
+   "label": "bad",
+   "kind": "too-short",
+   "verdict": "FAIL: Incorrect response format and content",
+   "raw": "FAIL: Incorrect response format and content",
+   "ms": 1577,
+   "ok": true
+  },
+  {
+   "id": 40,
+   "label": "bad",
+   "kind": "wrong-fact",
+   "verdict": "FAIL: incorrect interpretation of 'rule of thumb'",
+   "raw": "FAIL: incorrect interpretation of 'rule of thumb'",
+   "ms": 2575,
+   "ok": true
+  }
+ ]
+}

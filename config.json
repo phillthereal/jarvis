@@ -1,0 +1,20 @@
+{
+  "jev_threshold": 0.9,
+  "cascade": ["T2", "T4", "T3"],
+  "pro_spill_pct": 80,
+  "paid_enabled": false,
+  "ollama_model": "qwen3.5:9b",
+  "ollama_fallback": "qwen2.5:7b",
+  "check_model": "qwen3.5:9b",
+  "tier3_model": "sonnet",
+  "tier4_providers": [
+    {"name": "groq", "base_url": "https://api.groq.com/openai/v1", "model": "llama-3.3-70b-versatile", "key_env": "GROQ_API_KEY"},
+    {"name": "openrouter", "base_url": "https://openrouter.ai/api/v1", "model": "openrouter/free", "key_env": "OPENROUTER_API_KEY"}
+  ],
+  "high_stakes": ["contract", "payment", "invoice", "legal", "medical", "send ", "email to"],
+  "private_patterns": ["my email", "inbox", "vault", "notion", "salary"],
+  "tts_voice": "Jamie (Premium)",
+  "port": 8777,
+  "vault_path": "~/Claude+Obsidian",
+  "library_inbox_dirs": ["~/agentic-os/data/inbox", "~/Library/Mobile Documents/com~apple~CloudDocs/Jarvis Inbox"]
+}

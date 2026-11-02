@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>__HOME__/.local/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+	<key>Label</key>
+	<string>com.filip.aos-morning-intel</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>__HOME__/agentic-os/scripts/run_skill.sh</string>
+		<string>morning-intel</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>__HOME__/agentic-os/data/logs/aos-morning-intel.err.log</string>
+	<key>StandardOutPath</key>
+	<string>__HOME__/agentic-os/data/logs/aos-morning-intel.log</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>6</integer>
+		<key>Minute</key>
+		<integer>30</integer>
+	</dict>
+	<key>WorkingDirectory</key>
+	<string>__HOME__/Claude+Obsidian</string>
+</dict>
+</plist>

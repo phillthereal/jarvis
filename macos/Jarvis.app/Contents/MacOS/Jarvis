@@ -1,0 +1,16 @@
+#!/bin/sh
+# Start the Jarvis bridge if it is not answering, then open it in a standalone window.
+URL=http://127.0.0.1:8777
+up() { curl -s -o /dev/null --max-time 1 "$URL"; }
+if ! up; then
+  if ! launchctl kickstart "gui/$(id -u)/com.filip.aos-bridge" 2>/dev/null; then
+    mkdir -p "$HOME/agentic-os/data/logs"
+    cd "$HOME/agentic-os" && PATH="/usr/local/bin:/usr/bin:/bin:$PATH" nohup python3 -m bridge >>data/logs/bridge.log 2>&1 &
+  fi
+  i=0; while [ $i -lt 20 ] && ! up; do sleep 0.5; i=$((i+1)); done
+fi
+if [ -d "/Applications/Google Chrome.app" ]; then
+  open -na "Google Chrome" --args --app="$URL"
+else
+  open "$URL"
+fi

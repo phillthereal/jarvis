@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "instructions": "Decide which tier should answer this request from Filip to his personal assistant.",
+  "criteria": {
+    "T1": "a lookup of Filip's own saved data: priorities, inbox items, usage, something in his notes",
+    "T2": "a short general question or quick summary answerable in a few sentences without tools",
+    "T3": "real work: research, drafting, multi-step reasoning, anything needing files, tools or the vault"
+  },
+  "notes": []
+}
