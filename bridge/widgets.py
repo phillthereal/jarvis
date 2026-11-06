@@ -10,7 +10,7 @@ import urllib.request
 from pathlib import Path
 
 DONE_NAMES = {"done", "complete", "completed", "closed", "resolved", "sent", "archived", "finished"}
-CAL_APP = Path.home() / "Applications" / "JarvisCalendar.app"  # built by macos/calendar/build.sh
+CAL_APP = Path.home() / "Applications" / "KeystoneCalendar.app"  # built by macos/calendar/build.sh
 
 
 def vault(cfg):

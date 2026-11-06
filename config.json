@@ -16,5 +16,5 @@
   "tts_voice": "Jamie (Premium)",
   "port": 8777,
   "vault_path": "~/Claude+Obsidian",
-  "library_inbox_dirs": ["~/agentic-os/data/inbox", "~/Library/Mobile Documents/com~apple~CloudDocs/Jarvis Inbox"]
+  "library_inbox_dirs": ["~/agentic-os/data/inbox", "~/Library/Mobile Documents/com~apple~CloudDocs/Keystone Inbox"]
 }

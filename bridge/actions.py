@@ -1,4 +1,4 @@
-"""Actions with approval (SPEC "v2 additions"). Model answers may carry ```jarvis-action JSON blocks; the bridge
+"""Actions with approval (SPEC "v2 additions"). Model answers may carry ```keystone-action JSON blocks; the bridge
 validates them into *pending* rows in requests.db. Nothing runs until POST /api/actions/<id>/approve, which executes
 once (status guard). Never sends email: email_draft only writes a vault file + a mailto: link. Stdlib only."""
 import contextlib
@@ -19,7 +19,7 @@ SCHEMA = """CREATE TABLE IF NOT EXISTS actions (
     id INTEGER PRIMARY KEY, type TEXT NOT NULL, payload TEXT NOT NULL, summary TEXT NOT NULL,
     status TEXT NOT NULL DEFAULT 'pending', created TEXT NOT NULL, decided TEXT, result TEXT);"""
 
-FENCE_RE = re.compile(r"```jarvis-action[ \t]*\r?\n(.*?)```", re.S)
+FENCE_RE = re.compile(r"```keystone-action[ \t]*\r?\n(.*?)```", re.S)
 MAX_PER_ANSWER = 3
 EMAIL_RE = re.compile(r"[^@\s<>,;:\"'()\[\]\\]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
 NOTION_ID_RE = re.compile(r"[0-9a-f]{32}")
@@ -115,9 +115,9 @@ def _page_title(page):
 
 # ---- calendar helper (injectable) -----------------------------------------------------------------
 def calendar_run(title, start, end, notes=""):
-    """Runs JarvisCalendar.app in add mode. -> first output line ('OK <id>' / 'ERR <reason>')."""
+    """Runs KeystoneCalendar.app in add mode. -> first output line ('OK <id>' / 'ERR <reason>')."""
     if not widgets.CAL_APP.exists():
-        raise ActionError("JarvisCalendar.app is not installed (run macos/calendar/build.sh)")
+        raise ActionError("KeystoneCalendar.app is not installed (run macos/calendar/build.sh)")
     args = ["add", "--no-prompt", title, start, end] + ([notes] if notes else [])
     with tempfile.NamedTemporaryFile("r", suffix=".txt") as out:
         try:

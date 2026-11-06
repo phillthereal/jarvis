@@ -43,10 +43,10 @@
 - `web/style.css` — dashboard styles
 - `tests/test_intel.py`, `test_night.py`, `test_providers.py`, `test_route.py`, `test_server.py`, `test_widgets.py`, `test_tier1_shortcuts.py` — unittest modules
 - `launchd/com.filip.aos-bridge.plist` — keeps the bridge running at login (RunAtLoad, restart on crash)
-- `macos/Jarvis.app` — Dock app: starts bridge if down, opens Chrome app-mode window; `macos/icon.svg` is the icon source
-- `scripts/install_app.sh` — copies Jarvis.app to ~/Applications
-- `macos/calendar/` — JarvisCalendar.app source (EventKit: read today's events; `add` mode creates one event after approval) + `build.sh` (→ ~/Applications; rebuilding resets its calendar permission)
-- `bridge/actions.py` — actions with approval: parse jarvis-action blocks, validate, pending store, approve/reject, executors (Notion, calendar, email draft file + mailto)
+- `macos/Keystone.app` — Dock app: starts bridge if down, opens Chrome app-mode window; `macos/icon.svg` is the icon source
+- `scripts/install_app.sh` — copies Keystone.app to ~/Applications
+- `macos/calendar/` — KeystoneCalendar.app source (EventKit: read today's events; `add` mode creates one event after approval) + `build.sh` (→ ~/Applications; rebuilding resets its calendar permission)
+- `bridge/actions.py` — actions with approval: parse keystone-action blocks, validate, pending store, approve/reject, executors (Notion, calendar, email draft file + mailto)
 - `tests/test_actions.py` — action schema, guards, injection, executor and mailto tests
 - `bridge/health.py` — launchd job health (last exit code, log mtime, missed slots) for `/api/health`
 - `scripts/backup_vault.sh` — nightly vault git backup (refuses to commit plugin data.json)
@@ -55,7 +55,7 @@
 - `tests/test_health.py` — health parsing/slot logic tests
 - Vault `.claude/skills/weekly-review/SKILL.md` — weekly review skill (writes `outputs/reviews/YYYY-Www.md`); `outputs/reviews/` holds the results
 - Weekly and system widgets live in `bridge/widgets.py`, routed in `bridge/server.py`; panels in `web/`
-- `macos/reader/` — JarvisReader CLI source (PDFKit text, Vision OCR for scans/images; `ERR <reason>` on failure) + `build.sh` (→ `bin/JarvisReader`, gitignored; no TCC permission needed)
-- `bridge/library.py` — document library: read (JarvisReader/textutil/plain), classify with local Ollama (JSON, validated), file into vault `library/<Category>/` + sidecar note, `_review`/`_duplicates`, `file_review`, `scan` (CLI `python3 -m bridge.library scan|process`), `listing`
+- `macos/reader/` — KeystoneReader CLI source (PDFKit text, Vision OCR for scans/images; `ERR <reason>` on failure) + `build.sh` (→ `bin/KeystoneReader`, gitignored; no TCC permission needed)
+- `bridge/library.py` — document library: read (KeystoneReader/textutil/plain), classify with local Ollama (JSON, validated), file into vault `library/<Category>/` + sidecar note, `_review`/`_duplicates`, `file_review`, `scan` (CLI `python3 -m bridge.library scan|process`), `listing`
 - `tests/test_library.py` — classify validation, filing/collision/sanitising, duplicates, review decisions, scan skip rules + lock, upcoming window
-- `config.json` `library_inbox_dirs` — inbox folders scanned by `bridge.library scan` (data/inbox + iCloud `Jarvis Inbox`)
+- `config.json` `library_inbox_dirs` — inbox folders scanned by `bridge.library scan` (data/inbox + iCloud `Keystone Inbox`)

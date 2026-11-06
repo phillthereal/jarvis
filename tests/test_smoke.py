@@ -55,7 +55,7 @@ class ServerTests(unittest.TestCase):
     def test_index_served(self):
         status, body = self.get("/")
         self.assertEqual(status, 200)
-        self.assertIn(b"Jarvis", body)
+        self.assertIn(b"Keystone", body)
 
     def test_unknown_path_404(self):
         status, _ = self.get("/nope")

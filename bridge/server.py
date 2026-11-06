@@ -256,7 +256,7 @@ class App:
             return False
 
     def answer_with_actions(self, question, r):
-        """Strip jarvis-action blocks, store valid ones as pending, save the clean answer. Never executes."""
+        """Strip keystone-action blocks, store valid ones as pending, save the clean answer. Never executes."""
         props, errs = [], []
         if r.get("final_tier") and r["final_tier"] != "T1" and self.actions:  # T1 text is data, not a model answer
             clean, items = actions.extract(r["answer"])

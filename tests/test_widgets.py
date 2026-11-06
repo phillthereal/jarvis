@@ -59,7 +59,7 @@ class CalendarPlanIntelTests(unittest.TestCase):
         widgets._CAL["v"] = None
 
     def test_calendar_permission_and_timeout(self):
-        def helper(text):  # fake `open --stdout <file> JarvisCalendar.app`
+        def helper(text):  # fake `open --stdout <file> KeystoneCalendar.app`
             return lambda cmd, **kw: Path(cmd[cmd.index("--stdout") + 1]).write_text(text)
         with mock.patch.object(widgets, "CAL_APP", Path(__file__)), \
                 mock.patch("subprocess.run", side_effect=helper("2026-11-01T09:30:00Z\tStandup\n")):

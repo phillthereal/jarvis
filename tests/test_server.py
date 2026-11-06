@@ -173,12 +173,12 @@ class ServerTests(unittest.TestCase):
 
     # ---- actions
     def test_ask_proposes_action_and_approve_flow(self):
-        block = ('Drafted it.\n\n```jarvis-action\n{"type": "email_draft", "to": "jo@example.com", '
-                 '"subject": "Rent", "body": "Hi Jo"}\n```\n\n```jarvis-action\n{"type": "shell"}\n```')
+        block = ('Drafted it.\n\n```keystone-action\n{"type": "email_draft", "to": "jo@example.com", '
+                 '"subject": "Rent", "body": "Hi Jo"}\n```\n\n```keystone-action\n{"type": "shell"}\n```')
         t2 = self.app.router.providers["T2"]
         with mock.patch.object(t2, "complete", return_value=server.Answer(block, "t2", "m", True, None, 1)) as c:
             s, d = self.api("POST", "/api/ask", {"text": "draft a reply to Jo about the rent"})
-        self.assertIn("jarvis-action", c.call_args.kwargs["system"])
+        self.assertIn("keystone-action", c.call_args.kwargs["system"])
         self.assertEqual(s, 200)
         self.assertEqual(d["answer"], "Drafted it.")
         self.assertEqual([a["type"] for a in d["actions"]], ["email_draft"])
@@ -186,7 +186,7 @@ class ServerTests(unittest.TestCase):
         aid = d["actions"][0]["id"]
         md = next((self.vault / "outputs" / "conversations").glob("*.md")).read_text()
         self.assertIn(f"Proposed action #{aid}: Draft: email to jo@example.com", md)
-        self.assertNotIn("jarvis-action", md)
+        self.assertNotIn("keystone-action", md)
         s, lst = self.api("GET", "/api/actions")
         self.assertEqual([p["id"] for p in lst["pending"]], [aid])
         self.assertEqual(lst["pending"][0]["payload"]["to"], "jo@example.com")
@@ -281,11 +281,11 @@ class LibraryApiTests(ServerTests):
 
     def test_upload_sidecar(self):
         s, d = self.up("Side.txt", extra={"X-Description": "Jo%27s%20car%20policy"})
-        self.assertEqual(json.loads((self.inbox() / "Side.jarvis.json").read_text()), {"description": "Jo's car policy"})
+        self.assertEqual(json.loads((self.inbox() / "Side.keystone.json").read_text()), {"description": "Jo's car policy"})
         self.up("Plain.txt")
-        self.assertFalse((self.inbox() / "Plain.jarvis.json").exists())
+        self.assertFalse((self.inbox() / "Plain.keystone.json").exists())
         self.up("Long.txt", extra={"X-Description": "x" * 900})
-        self.assertEqual(len(json.loads((self.inbox() / "Long.jarvis.json").read_text())["description"]), 500)
+        self.assertEqual(len(json.loads((self.inbox() / "Long.keystone.json").read_text())["description"]), 500)
 
     def test_upload_rejections(self):
         self.assertEqual(self.up("evil.exe")[0], 415)

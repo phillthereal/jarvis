@@ -1,4 +1,4 @@
-// JarvisReader <file>: prints the file's text to stdout (local only, no permissions needed).
+// KeystoneReader <file>: prints the file's text to stdout (local only, no permissions needed).
 // PDF -> PDFKit text per page; a page with < 20 chars is rendered and OCR'd with Vision.
 // Images (png/jpg/jpeg/heic/tiff) -> Vision OCR. Output capped at 200k chars. Failure: "ERR <reason>", exit 1.
 import AppKit
@@ -32,7 +32,7 @@ func render(_ page: PDFPage) -> CGImage? {
 }
 
 let args = CommandLine.arguments
-guard args.count == 2 else { fail("usage: JarvisReader <file>") }
+guard args.count == 2 else { fail("usage: KeystoneReader <file>") }
 let url = URL(fileURLWithPath: args[1])
 guard FileManager.default.isReadableFile(atPath: url.path) else { fail("not-readable") }
 var out = ""

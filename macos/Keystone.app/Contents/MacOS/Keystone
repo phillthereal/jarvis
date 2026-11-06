@@ -1,5 +1,5 @@
 #!/bin/sh
-# Start the Jarvis bridge if it is not answering, then open it in a standalone window.
+# Start the Keystone bridge if it is not answering, then open it in a standalone window.
 URL=http://127.0.0.1:8777
 up() { curl -s -o /dev/null --max-time 1 "$URL"; }
 if ! up; then

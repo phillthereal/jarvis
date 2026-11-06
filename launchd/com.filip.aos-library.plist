@@ -24,7 +24,7 @@
 	<key>WatchPaths</key>
 	<array>
 		<string>__HOME__/agentic-os/data/inbox</string>
-		<string>__HOME__/Library/Mobile Documents/com~apple~CloudDocs/Jarvis Inbox</string>
+		<string>__HOME__/Library/Mobile Documents/com~apple~CloudDocs/Keystone Inbox</string>
 	</array>
 	<key>WorkingDirectory</key>
 	<string>__HOME__/agentic-os</string>

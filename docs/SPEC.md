@@ -1,4 +1,4 @@
-# Agentic OS ("Jarvis") v1 — spec
+# Agentic OS ("Keystone") v1 — spec
 
 Routing decisions and their reasons: `docs/ROUTING-DESIGN.md` (locked). This file is the build contract.
 
@@ -142,7 +142,7 @@ Nightly via launchd (`StartCalendarInterval` 22:00, runs on wake if missed):
   - Proposal: requests matching the action-intent regex (mark/set/tick … done/status/task; add/put/schedule/book …
     calendar/event/meeting/reminder; draft/reply/write … email/mail/reply) are answered with `ACTION_SYSTEM`
     (route.py; never sent to the checker; other requests keep no system prompt). The answer may contain up to 3
-    fenced ` ```jarvis-action ` JSON blocks. The bridge strips every block from the shown/saved answer, validates
+    fenced ` ```keystone-action ` JSON blocks. The bridge strips every block from the shown/saved answer, validates
     each against its type schema (unknown type or key → rejected, not stored) and stores valid ones as `pending`
     with a bridge-written summary. T1 answers are never parsed. Nothing executes without `approve`.
   - `notion_task_update`: `{task: title ≤200 | page_id: Notion id, done?: bool, status?: str ≤50}`, at least one of
@@ -151,7 +151,7 @@ Nightly via launchd (`StartCalendarInterval` 22:00, runs on wake if missed):
     property (no checkbox: a done-like status option), `status` → the status/select property (must be an existing
     option); PATCH the page. Result `"updated <title>"`.
   - `calendar_add`: `{title ≤200, start "YYYY-MM-DDTHH:MM" local, end same format | duration_min 5..1440,
-    notes? ≤2000}`; end after start; start within the next 365 days. Execute: JarvisCalendar.app
+    notes? ≤2000}`; end after start; start within the next 365 days. Execute: KeystoneCalendar.app
     `--args add --no-prompt <title> <start> <end> [notes]` → `OK <id>` / `ERR <reason>`.
   - `email_draft`: `{to: one address, subject ≤200 one line, body ≤20000}`. Execute: write
     `<vault>/outputs/drafts/<YYYY-MM-DD>-<slug>.md` (frontmatter type/to/subject/created; never overwrites, adds
@@ -174,7 +174,7 @@ Engine: `bridge/library.py`. All routes need the cookie and Host/Origin checks.
   streamed to disk; 413 above, 415 for another content type or an extension outside pdf png jpg jpeg heic tiff txt
   md csv doc docx rtf odt, 400 for empty/short). Headers: `X-Filename` (percent-encoded; path stripped,
   extension kept), optional `X-Description` (percent-encoded, cut to 500 chars). The file goes to the first `library_inbox_dirs` entry under a hidden temp
-  name, then `<stem>.jarvis.json` `{description}` is written, then the file is linked into place
+  name, then `<stem>.keystone.json` `{description}` is written, then the file is linked into place
   (never overwrites: " (2)"…). -> `{"ok": true, "name": "<final file name>"}`. Filing happens when the watcher
   (`launchd/com.filip.aos-library.plist`, `WatchPaths` on both inbox dirs, runs `python3 -m bridge.library scan`)
   fires; `scan` re-passes every 3 s (max 10 passes) while it skipped files younger than 3 s.

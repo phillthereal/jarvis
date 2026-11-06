@@ -1,4 +1,4 @@
-"""Document library: read a dropped file locally (JarvisReader / textutil / plain text),
+"""Document library: read a dropped file locally (KeystoneReader / textutil / plain text),
 let the local Ollama model propose a category + facts, then move it into the vault
 `library/<Category>/` with a sidecar note, or into `library/_review/` when unsure. Never Tier 3/4/5,
 never deletes or overwrites a user file (move only). Document text is untrusted: fenced, never obeyed, output
@@ -20,14 +20,14 @@ from pathlib import Path
 from bridge.config import ROOT, db_path, load_config
 
 CATEGORIES = ("Insurance", "Contracts", "Payments", "Health", "ID", "Home", "Car", "Work", "Other")
-READER = ROOT / "bin" / "JarvisReader"  # built by macos/reader/build.sh
+READER = ROOT / "bin" / "KeystoneReader"  # built by macos/reader/build.sh
 IMAGE_EXT = {"png", "jpg", "jpeg", "heic", "tiff", "tif"}
 TEXTUTIL_EXT = {"doc", "docx", "rtf", "odt"}
 PLAIN_EXT = {"txt", "md", "csv"}
 TEXT_CAP, PROMPT_CAP = 200_000, 6000
 MIN_CONFIDENCE = 0.6
 DATE_RE = re.compile(r"\d{4}-\d\d-\d\d")
-SIDECAR = ".jarvis.json"
+SIDECAR = ".keystone.json"
 SCHEMA = """CREATE TABLE IF NOT EXISTS library (
     id INTEGER PRIMARY KEY, sha256 TEXT UNIQUE, original_name TEXT NOT NULL, path TEXT NOT NULL,
     status TEXT NOT NULL, fields TEXT NOT NULL DEFAULT '{}', note_path TEXT, created TEXT NOT NULL, decided TEXT);"""
@@ -181,7 +181,7 @@ def write_note(dest, f, added):
     front = "\n".join(f"{k}: {_yaml(f.get(k))}" for k in keys)
     summary = (f.get("summary") or "No summary.").replace("`", "'")
     text = (f"---\ntype: document\n{front}\nfile: {_yaml(dest.name)}\nadded: {added}\n---\n\n"
-            f"Original: [[{dest.name}]]\n\n> Extracted by Jarvis from an untrusted document. "
+            f"Original: [[{dest.name}]]\n\n> Extracted by Keystone from an untrusted document. "
             f"Check the original before acting on it.\n\n```text\n{summary}\n```\n")
     note = dest.with_suffix(".md")
     with note.open("x") as fh:
@@ -252,7 +252,7 @@ class Library:
                              "VALUES (NULL,?,?,'duplicate',?,?,?)",
                              (name, str(dest), json.dumps({"sha256": sha, "duplicate_of": first[0][0] if first else None}),
                               _now(), _now()))[1]
-            self.notify("Jarvis: duplicate", f"{name} is already in the library")
+            self.notify("Keystone: duplicate", f"{name} is already in the library")
             return self.get(rid)
         text = self.reader(src)
         if text is None:
@@ -268,11 +268,11 @@ class Library:
             if reason is None:
                 self._file(rid, src, f)
                 dest = Path(self.get(rid)["path"])
-                self.notify("Jarvis filed a document", f"{name} → {dest.relative_to(self.root).parent}/{dest.name}")
+                self.notify("Keystone filed a document", f"{name} → {dest.relative_to(self.root).parent}/{dest.name}")
             else:
                 dest = _move(src, self.root / "_review", safe_name(src.stem, "file"), src.suffix.lower())
                 self._set(rid, path=str(dest), fields={**f, "reason": reason})
-                self.notify("Jarvis: needs a look", f"{name}: {reason}")
+                self.notify("Keystone: needs a look", f"{name}: {reason}")
         except OSError as e:  # the file stays where it was; the row says why
             self._set(rid, fields={**f, "reason": f"could not move: {type(e).__name__}"})
         return self.get(rid)
@@ -345,7 +345,7 @@ class Library:
                 try:
                     r = self.process(p, desc if isinstance(desc, str) else "")
                     done.append({"file": p.name, "id": r["id"], "status": r["status"]})
-                    side.unlink(missing_ok=True)  # Jarvis's own upload metadata, not a user file
+                    side.unlink(missing_ok=True)  # Keystone's own upload metadata, not a user file
                 except OSError as e:
                     done.append({"file": p.name, "error": type(e).__name__})
         return fresh

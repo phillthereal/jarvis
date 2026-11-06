@@ -168,7 +168,7 @@ async function loadPlan() {
       cb.checked = !!x.done;
       d.append(el("li", { class: x.done ? "done" : "" }, cb, el("span", { text: x.text })));
     });
-    if (p.calendar === "denied" || p.calendar_permission === false) ev.append(el("li", { class: "empty", text: "Open JarvisCalendar in ~/Applications once and allow access" }));
+    if (p.calendar === "denied" || p.calendar_permission === false) ev.append(el("li", { class: "empty", text: "Open KeystoneCalendar in ~/Applications once and allow access" }));
     else if (!(p.events || []).length) ev.append(el("li", { class: "empty", text: "Nothing scheduled." }));
     else for (const e of p.events) ev.append(el("li", {}, el("span", { class: "time", text: e.time || "" }), el("span", { text: e.title || "" })));
   } catch (e) { clear(d); d.append(el("li", { class: "empty", text: "Couldn't load plan: " + msg(e) })); }

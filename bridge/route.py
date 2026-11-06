@@ -14,7 +14,7 @@ ACTION_RE = re.compile(r"\b(mark|set|tick)\b.*\b(done|status|task)\b"
                        r"|\b(add|put|schedule|book)\b.*\b(calendar|event|meeting|reminder)\b"
                        r"|\b(draft|reply|write)\b.*\b(email|mail|reply)\b", re.I | re.S)
 ACTION_SYSTEM = """You cannot act directly. To propose an action, include one fenced block like:
-```jarvis-action
+```keystone-action
 {"type": "<type>", ...fields}
 ```
 Types: notion_task_update {task: exact task title (or page_id), done: true/false and/or status: text};

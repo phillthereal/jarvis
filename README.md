@@ -1,8 +1,8 @@
-# Jarvis — a local-first personal AI operating system
+# Keystone — a local-first personal AI operating system
 
 One private assistant that runs on a single Mac: it answers from saved data or a local model first, calls cloud models only when it has to, and never acts on your behalf without an explicit Approve.
 
-![Jarvis dashboard in demo mode](docs/images/dashboard.png)
+![Keystone dashboard in demo mode](docs/images/dashboard.png)
 
 *Dashboard in demo mode. All data shown is made up.*
 
@@ -16,7 +16,7 @@ My AI help was scattered across chat apps, paid APIs, notes and email. I wanted 
 - **Tiered routing**: each request goes to the cheapest tier that can answer it (see below). Every step is logged, with a thumbs up/down and an Escalate button that reruns one tier up.
 - **Local answer checker**: a local model grades each answer `PASS` or `FAIL` before it is accepted, and a failure escalates to the next tier.
 - **Document library**: drop a PDF or photo and it is read on-device (PDFKit text, Vision OCR for scans and images), classified by the local model, named, filed into the vault with a summary note, and checked for duplicates. A macOS notification says where each file went. Low-confidence documents wait in a review queue. Renewal and expiry dates feed a "coming up" list with a Remind me button.
-- **Actions only after Approve**: Jarvis can propose a Notion task update, a calendar event or an email draft. Proposals are validated against a strict schema and wait for a click. Email is saved as a draft file with a mailto link; **it never sends email**.
+- **Actions only after Approve**: Keystone can propose a Notion task update, a calendar event or an email draft. Proposals are validated against a strict schema and wait for a click. Email is saved as a draft file with a mailto link; **it never sends email**.
 - **Voice**: answers can be read aloud (browser speech synthesis, with a preferred voice from config). For input, any dictation app works with the "Pause to send" mode, which submits once the text has been still for 2.5 seconds.
 - **Night school**: a nightly learning loop that reviews the day's routing decisions and proposes improvements (details below).
 - **Vault backup and ingest**: scheduled jobs convert raw captures to wiki articles (23:00) and back up the Obsidian vault with local git (23:30).
@@ -96,7 +96,7 @@ This is a personal project built for one Mac, not a packaged product. Setup assu
 Requirements: macOS 14+, Python 3.13, [Ollama](https://ollama.com) with the model named in `config.json` (`qwen3.5:9b`, fallback `qwen2.5:7b`). Optional: Obsidian with the Local REST API plugin, the `claude` CLI, and free Groq/OpenRouter keys.
 
 ```bash
-git clone https://github.com/phillthereal/jarvis ~/agentic-os   # scripts and launchd jobs expect this path
+git clone https://github.com/phillthereal/keystone ~/agentic-os   # scripts and launchd jobs expect this path
 cd ~/agentic-os
 cp .env.example .env              # every key is optional; missing ones switch that feature off
 AOS_OFFLINE=1 python3 -m unittest # full suite, no network
@@ -113,4 +113,4 @@ Designed and directed by me, implemented with AI pair-programming (Claude Code) 
 
 ## Related
 
-- [ai-workload-router](https://github.com/phillthereal/ai-workload-router): the routing and classifier project that Jarvis builds on.
+- [ai-workload-router](https://github.com/phillthereal/ai-workload-router): the routing and classifier project that Keystone builds on.

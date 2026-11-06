@@ -1,4 +1,4 @@
-// JarvisCalendar: prints today's events as "ISO-UTC<TAB>title" lines, or "ERR no-permission".
+// KeystoneCalendar: prints today's events as "ISO-UTC<TAB>title" lines, or "ERR no-permission".
 // Add mode (bridge, only after Filip approves): `add --no-prompt <title> <yyyy-MM-ddTHH:mm> <end> [notes]`
 // (local time) -> creates the event in the default calendar, prints "OK <eventIdentifier>" or "ERR <reason>".
 // Double-click once to get the macOS permission prompt; the bridge runs it with --no-prompt.

@@ -14,7 +14,7 @@ Own design, inspired by a "command centre" feel. Not a copy of any product.
 - Focus rings: 2px `--accent` outline offset 2px. All controls keyboard reachable. Text contrast ≥ 4.5:1.
 
 ## Header (full width)
-Left: "JARVIS" wordmark (mono, 18px, letter-spacing .2em) + "v2" faint + a health dot (8px, `--t5` red, 8px left margin, vertically centred; hidden unless a background job has `ok:false`; aria-label/title list job and detail; from `/api/health`, polled with `/api/status`). Centre: tier health strip
+Left: "KEYSTONE" wordmark (mono, 18px, letter-spacing .2em) + "v2" faint + a health dot (8px, `--t5` red, 8px left margin, vertically centred; hidden unless a background job has `ok:false`; aria-label/title list job and detail; from `/api/health`, polled with `/api/status`). Centre: tier health strip
 (chips T1 · JEV · T2 · T3 · T4 · T5; green dot = up, amber = no key / degraded, grey = off) from `/api/status`.
 Right: clock HH:MM (big, mono) + date (faint).
 

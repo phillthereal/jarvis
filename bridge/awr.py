@@ -1,4 +1,4 @@
-"""The one place Jarvis finds ~/Ai Workload (AOS_AI_WORKLOAD overrides; imported via sys.path, never modified).
+"""The one place Keystone finds ~/Ai Workload (AOS_AI_WORKLOAD overrides; imported via sys.path, never modified).
 Importing this module puts the repo root (jev_loop.py ...) and src/ (router package) on sys.path."""
 import os
 import sys
@@ -13,6 +13,6 @@ for _p in (AI_WORKLOAD / "src", AI_WORKLOAD):
 
 
 def jev_key(env=None):
-    """TypeSafe (Jev) key: Jarvis .env (or the given env dict) first, then Ai Workload's .env."""
+    """TypeSafe (Jev) key: Keystone .env (or the given env dict) first, then Ai Workload's .env."""
     env = load_env() if env is None else env
     return env.get("TYPESAFE_API_KEY") or load_env(AI_WORKLOAD / ".env").get("TYPESAFE_API_KEY")

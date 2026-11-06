@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>CFBundleIdentifier</key><string>com.filip.jarvis-calendar</string>
-  <key>CFBundleName</key><string>JarvisCalendar</string>
-  <key>CFBundleExecutable</key><string>JarvisCalendar</string>
+  <key>CFBundleIdentifier</key><string>com.filip.keystone-calendar</string>
+  <key>CFBundleName</key><string>KeystoneCalendar</string>
+  <key>CFBundleExecutable</key><string>KeystoneCalendar</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleVersion</key><string>1</string>
   <key>CFBundleShortVersionString</key><string>1.0</string>
   <key>LSMinimumSystemVersion</key><string>14.0</string>
   <key>LSUIElement</key><true/>
-  <key>NSCalendarsFullAccessUsageDescription</key><string>Jarvis shows today's events in its Plan panel (read-only).</string>
+  <key>NSCalendarsFullAccessUsageDescription</key><string>Keystone shows today's events in its Plan panel (read-only).</string>
 </dict></plist>

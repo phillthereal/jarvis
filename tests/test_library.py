@@ -128,9 +128,9 @@ class FilingTest(Base):
         self.llm.reply = {**GOOD, "confidence": 0.1}
         self.lib.process(self.drop("other.pdf", b"other"))
         self.assertEqual(got, [
-            ("Jarvis filed a document", "scan.pdf → Car/2025-12-10 Car insurance schedule.pdf"),
-            ("Jarvis: duplicate", "scan.pdf is already in the library"),
-            ("Jarvis: needs a look", "other.pdf: low confidence 0.10")])
+            ("Keystone filed a document", "scan.pdf → Car/2025-12-10 Car insurance schedule.pdf"),
+            ("Keystone: duplicate", "scan.pdf is already in the library"),
+            ("Keystone: needs a look", "other.pdf: low confidence 0.10")])
 
     def test_collision_and_sanitising(self):
         self.llm.reply = {**GOOD, "date": None, "title": "../../etc/pass:wd*?"}
@@ -194,7 +194,7 @@ class ScanTest(Base):
         self.drop("fresh.pdf", b"3", age=0)
         (self.inbox / "sub").mkdir()
         self.drop("ok.pdf", b"4")
-        (self.inbox / "ok.jarvis.json").write_text(json.dumps({"description": "bill"}))
+        (self.inbox / "ok.keystone.json").write_text(json.dumps({"description": "bill"}))
         out = self.lib.scan([self.inbox], passes=1)
         self.assertEqual([d["file"] for d in out["done"]], ["ok.pdf"])
         self.assertIn("bill", self.llm.calls[0]["prompt"])

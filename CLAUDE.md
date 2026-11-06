@@ -1,4 +1,4 @@
-# Agentic OS (Jarvis)
+# Agentic OS (Keystone)
 
 Stack: Python 3.13 stdlib bridge + static HTML/JS dashboard; reuses the `router` package from `~/Ai Workload`.
 

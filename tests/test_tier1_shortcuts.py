@@ -16,9 +16,9 @@ class Shortcuts(unittest.TestCase):
                 return tier1.match(text)
 
     def test_approved_shortcut_matches_normalised_text(self):
-        e = [{"pattern": r"(?i)^\s*gm jarvis[\s?!.]*$", "lookup": "priorities"}]
-        self.assertEqual(self.match(e, "GM   Jarvis?!"), "priorities")
-        self.assertIsNone(self.match(e, "gm jarvis please"))
+        e = [{"pattern": r"(?i)^\s*gm keystone[\s?!.]*$", "lookup": "priorities"}]
+        self.assertEqual(self.match(e, "GM   Keystone?!"), "priorities")
+        self.assertIsNone(self.match(e, "gm keystone please"))
 
     def test_bad_regex_and_disallowed_lookup_skipped(self):
         e = [{"pattern": "(", "lookup": "usage"}, {"pattern": "hello", "lookup": "rm -rf"},
